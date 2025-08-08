@@ -12,21 +12,40 @@ function diminuiTamanho(){
         tamanhoSenha--;
     }
     numeroSenha.textContent = tamanhoSenha;
+    geraSenha();
 }
 function aumentaTamanho(){
     if (tamanhoSenha < 20){
         tamanhoSenha++;
     }
     numeroSenha.textContent = tamanhoSenha;
+    geraSenha()
 }
 
 const campoSenha = document.querySelector('#campo-senha');
+const checkbox = document.querySelectorAll('.checkbox');
 
-const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVXYWZ';
+const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const letrasMinusculas = 'abcdefghijklmnopqrstuvwxyz';
+const numeros = '0123456789';
+const simbolo = '!@%*?';
+
 geraSenha();
 
 function geraSenha(){
-    let senha = '';
+    let alfabeto = '';
+    if (checkbox[0].checked){
+        alfabeto = alfabeto + letrasMaiusculas;
+    }
+    if (checkbox[1].checked){
+        alfabeto = alfabeto + letrasMinusculas;
+    }
+    if (checkbox[2].checked){
+        alfabeto = alfabeto + numeros;
+    }
+    if (checkbox[3].checked){
+        alfabeto = alfabeto + simbolo;
+    }
     for (let i = 0; i < tamanhoSenha; i++){
       let numeroAleatorio = Math.random() * letrasMaiusculas.length;
       numeroAleatorio = Math.floor(numeroAleatorio);
